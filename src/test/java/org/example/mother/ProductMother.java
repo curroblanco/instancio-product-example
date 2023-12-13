@@ -1,6 +1,7 @@
 package org.example.mother;
 
 import org.example.product.Product;
+import org.instancio.GeneratorSpecProvider;
 import org.instancio.Instancio;
 import org.instancio.Model;
 

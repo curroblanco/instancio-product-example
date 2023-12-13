@@ -1,0 +1,23 @@
+#!/bin/bash
+
+conventional_commit_regex='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z \-]+\))?!?: .+$'
+
+color_reset='\033[0m'
+color_red='\033[0;31m'
+
+pensive_face=$'\xf0\x9f\x98\x94'  # 😔
+rocket=$'\xf0\x9f\x9a\x80'  # 🚀
+
+validate_conventional_commit() {
+
+    commit_message=$(cat "$1")
+    if [[ ! $commit_message =~ $conventional_commit_regex ]]; then
+      echo -e "${color_red}The commit message doesn't meet the Conventional Commit standard ${pensive_face}${color_reset}"
+      echo "An example of a valid message is: "
+      echo "  feat(api): add support for XML response"
+      echo "${rocket} More details at: https://www.conventionalcommits.org/en/v1.0.0"
+      exit 1
+    fi
+}
+
+validate_conventional_commit "$1"
