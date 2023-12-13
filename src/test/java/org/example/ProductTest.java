@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.List;
 import org.example.mother.ProductMother;
 import org.example.product.Product;
 import org.instancio.Instancio;
@@ -27,6 +28,18 @@ class ProductTest {
 
         assertThat(product.isActive()).isTrue();
         assertThat(product.isValidPartNumber()).isTrue();
+    }
+
+    @Test
+    void buildRandomValuedProducts() {
+        final Model<Product> productModel = new ProductMother().buildDefaultInstance();
+        final List<Product> products = Instancio.ofList(productModel)
+            .set(field(Product::getPartNumber), "FAKE-VALUE")
+            .create();
+
+        assertThat(products).isNotNull();
+        assertThat(products)
+            .allSatisfy(item -> assertThat(item.getPartNumber()).isEqualTo("FAKE-VALUE"));
     }
 
     @Test

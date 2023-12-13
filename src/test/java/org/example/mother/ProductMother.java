@@ -1,6 +1,5 @@
 package org.example.mother;
 
-import org.example.bundle.Bundle;
 import org.example.product.Product;
 import org.instancio.Instancio;
 import org.instancio.Model;
