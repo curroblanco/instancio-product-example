@@ -1,5 +1,7 @@
 ## GIT configuration
 
+To ensure compliance with conventional commit standards, we recommend setting up a Git hook that automatically checks commit messages before committing changes. Follow these steps:
+
 ``` bash
 git config core.hooksPath .githooks && \
     chmod +x .githooks/commit-msg
