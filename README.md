@@ -1,3 +1,12 @@
+## GIT configuration
+
+To ensure compliance with conventional commit standards, we recommend setting up a Git hook that automatically checks commit messages before committing changes. Follow these steps:
+
+``` bash
+git config core.hooksPath .githooks && \
+    chmod +x .githooks/commit-msg
+```
+
 # Instancio Example - Product Creation
 
 This repository demonstrates the implementation of the Mother testing pattern using the Instancio library for generating realistic product instances. The Mother testing pattern is a technique for creating a large number of test objects with randomized properties while maintaining some structure to ensure the realism of testing scenarios.
