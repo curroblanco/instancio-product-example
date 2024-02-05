@@ -15,5 +15,5 @@ public @interface BenchMark {
    * Difference percentage allowed between last and current test
    * @return Allowed value
    */
-  int percentageAllowed() default 0;
+  double percentageAllowed() default 0;
 }

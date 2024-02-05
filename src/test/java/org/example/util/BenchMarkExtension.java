@@ -112,9 +112,18 @@ public class BenchMarkExtension implements BeforeTestExecutionCallback, AfterTes
       final double increasedPercentage =
           this.getPercentageIncrease(lastRunElapsedTimeMillis, elapsedTimeMillis);
 
+      if(this.isIncreasePercentageAllowed(increasedPercentage, testMethod)){
+        return;
+      }
+
       throw Failures.instance()
           .failure(String.format("The test method %s increased by %.2f%%.", testMethod.getName(), increasedPercentage));
     }
+  }
+
+  private boolean isIncreasePercentageAllowed(final double increasedPercentage, final Method testMethod) {
+    final BenchMark benchMark = testMethod.getAnnotation(BenchMark.class);
+    return increasedPercentage <= benchMark.percentageAllowed();
   }
 
   private boolean shouldGenerateSnapshot(final Snapshot snapshot) {

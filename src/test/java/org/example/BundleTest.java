@@ -17,7 +17,7 @@ import static org.instancio.Select.field;
 class BundleTest {
 
     @Test
-    @BenchMark
+    @BenchMark(percentageAllowed = 0.05)
     void buildRandomValuedBundle() throws InterruptedException {
         final Model<Bundle> bundleModel = new BundleMother().buildDefaultInstance();
         final Bundle bundle = Instancio.of(bundleModel)
